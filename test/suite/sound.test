@@ -1,0 +1,5 @@
+plugin_register token_filters/sound
+
+tokenize TokenDelimit \
+  "あい 々あいうえ 今日" \
+  --token_filters TokenFilterSound

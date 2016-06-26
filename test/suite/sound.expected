@@ -1,0 +1,4 @@
+plugin_register token_filters/sound
+[[0,0.0,0.0],true]
+tokenize TokenDelimit   "あい 々あいうえ 今日"   --token_filters TokenFilterSound
+[[0,0.0,0.0],[{"value":"今日","position":2,"force_prefix":false}]]
