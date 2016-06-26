@@ -16,7 +16,6 @@
 */
 
 #include <groonga/token_filter.h>
-#include <groonga/nfkc.h>
 
 #include <string.h>
 #include <stdlib.h>
