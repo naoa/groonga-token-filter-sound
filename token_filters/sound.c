@@ -178,7 +178,8 @@ isasoundword(grn_ctx *ctx, const char *s, size_t length)
 		return 0;
 	}
 	for (i = 0; i < length; ) {
-		U8_NEXT(s, i, length, u);
+		/* U8_NEXT(s, i, length, u); */
+		U8_NEXT_UNSAFE(s, i, u);
 		if (u < 0) {
 			return 0;
 		}
