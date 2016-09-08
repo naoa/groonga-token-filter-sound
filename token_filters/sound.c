@@ -27,6 +27,8 @@
 #  define GNUC_UNUSED
 #endif
 
+static grn_plugin_mutex *sole_sound_mutex = NULL;
+
 typedef struct {
   grn_obj *table;
   grn_token_mode mode;
@@ -224,16 +226,25 @@ sound_filter(grn_ctx *ctx,
 
   data = grn_token_get_data(ctx, current_token);
 
+  grn_plugin_mutex_lock(ctx, sole_sound_mutex);
   if (!isasoundword(ctx, GRN_TEXT_VALUE(data), GRN_TEXT_LEN(data))) {
     status = grn_token_get_status(ctx, current_token);
     status |= GRN_TOKEN_SKIP;
     grn_token_set_status(ctx, next_token, status);
   }
+  grn_plugin_mutex_unlock(ctx, sole_sound_mutex);
 }
 
 grn_rc
 GRN_PLUGIN_INIT(grn_ctx *ctx)
 {
+  sole_sound_mutex = grn_plugin_mutex_open(ctx);
+  if (!sole_sound_mutex) {
+    GRN_PLUGIN_ERROR(ctx, GRN_NO_MEMORY_AVAILABLE,
+                     "[tokenizer][yamecab] grn_plugin_mutex_open() failed");
+    return ctx->rc;
+  }
+
   return ctx->rc;
 }
 
@@ -253,6 +264,10 @@ GRN_PLUGIN_REGISTER(grn_ctx *ctx)
 grn_rc
 GRN_PLUGIN_FIN(GNUC_UNUSED grn_ctx *ctx)
 {
+  if (sole_sound_mutex) {
+    grn_plugin_mutex_close(ctx, sole_sound_mutex);
+    sole_sound_mutex = NULL;
+  }
 
   return GRN_SUCCESS;
 }
