@@ -1,0 +1,5 @@
+plugin_register token_filters/sound
+
+tokenize TokenBigram \
+  "ai ue" \
+  --token_filters TokenFilterSound

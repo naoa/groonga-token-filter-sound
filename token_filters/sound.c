@@ -111,7 +111,7 @@ static int vtbl[0x0080] = {
 /*  18 can   19 em    1a sub   1b esc   1c fs    1d gs    1e rs    1f us  */
     INVAL,   INVAL,   INVAL,   INVAL,   INVAL,   INVAL,   INVAL,   INVAL, 
 /*  20 sp    21  !    22  "    23  #    24  $    25  %    26  &    27  '  */
-    INVAL,   ALLOW,   INVAL,   ALLOW,   ALLOW,   ALLOW,   ALLOW,   ALLOW, 
+    ALLOW,   ALLOW,   INVAL,   ALLOW,   ALLOW,   ALLOW,   ALLOW,   ALLOW, 
 /*  28  (    29  )    2a  *    2b  +    2c  ,    2d  -    2e  .    2f  /  */
     INVAL,   INVAL,   INVAL,   ALLOW,   ALLOW,   ALLOW,   ALLOW,   ALLOW, 
 /*  30  0    31  1    32  2    33  3    34  4    35  5    36  6    37  7  */

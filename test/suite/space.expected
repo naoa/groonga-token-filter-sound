@@ -1,0 +1,37 @@
+plugin_register token_filters/sound
+[[0,0.0,0.0],true]
+tokenize TokenBigram   "ai ue"   --token_filters TokenFilterSound
+[
+  [
+    0,
+    0.0,
+    0.0
+  ],
+  [
+    {
+      "value": "ai",
+      "position": 0,
+      "force_prefix": false
+    },
+    {
+      "value": "i ",
+      "position": 1,
+      "force_prefix": false
+    },
+    {
+      "value": " u",
+      "position": 2,
+      "force_prefix": false
+    },
+    {
+      "value": "ue",
+      "position": 3,
+      "force_prefix": false
+    },
+    {
+      "value": "e",
+      "position": 4,
+      "force_prefix": false
+    }
+  ]
+]
